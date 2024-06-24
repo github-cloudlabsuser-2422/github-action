@@ -3,12 +3,12 @@ name: CI
 on:
     push:
         branches:
-            - master
+            - main
         paths:
             - '.github/workflows/matrix.yml'
     pull_request:
         branches:
-            - master
+            - main
         paths:
             - '.github/workflows/matrix.yml'
   
