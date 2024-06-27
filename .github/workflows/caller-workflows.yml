@@ -1,18 +1,24 @@
-name: Caller Workflow  
+name: Caller Workflow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/caller-workflows.yml'
+  workflow_dispatch:
+
+jobs:
+  # Job to call the reusable workflow
+  call-reusable-workflow:
+    # Specifies the path to the reusable workflow
+    uses: ./.github/workflows/reusable-print-message.yml
+    with:
+      # Passes the message to the reusable workflow
+      message: "Hello from the caller workflow!"
+  print-message:  
+     runs-on: ubuntu-latest  
   
-on:  
-  push:  
-    branches:  
-      - main  
-    paths:  
-      - '.github/workflows/caller-workflows.yml'  
-  workflow_dispatch:  
-  
-jobs:  
-  # Job to call the reusable workflow  
-  call-reusable-workflow:  
-    # Specifies the path to the reusable workflow  
-    uses: ./.github/workflows/reusable-print-message.yml  
-    with:  
-      # Passes the message to the reusable workflow  
-      message: "Caller Workflow too: name: Caller Workflow"  
+     steps:  
+       - name: Print Message  
+         run: echo "Hi, this message is from caller workflow"  
