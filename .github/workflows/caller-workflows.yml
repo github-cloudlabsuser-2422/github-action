@@ -16,7 +16,7 @@ jobs:
     steps:  
       # Step to call the reusable action  
       - name: Call reusable action  
-        uses: owner/repo@v1  # Replace with the actual owner/repo and version of the reusable action  
+        uses: github-cloudlabsuser-2422/repo@v1  # Replace with the actual owner/repo and version of the reusable action  
         with:  
           message: ${{ github.event.inputs.message }}  
   
