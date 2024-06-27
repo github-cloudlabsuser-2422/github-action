@@ -9,18 +9,10 @@ on:
   workflow_dispatch:  
   
 jobs:  
-  # Job to call the reusable action  
-  call-reusable-action:  
-    runs-on: ubuntu-latest  
-  
-    steps:  
-      # Step to call the reusable action  
-      - name: Call reusable action  
-        uses: github-cloudlabsuser-2422/github-action@main  # Replace with the actual owner/repo and version of the reusable action  
-        with:  
-          message: ${{ github.event.inputs.message }}  
-  
-      # Step to print the message from the caller workflow  
-      - name: Print caller message  
-        run: |  
-          echo "Message from caller workflow: ${{ github.event.inputs.message }}"  
+  # Job to call the reusable workflow  
+  call-reusable-workflow:  
+    # Specifies the path to the reusable workflow  
+    uses: ./.github/workflows/reusable-print-message.yml  
+    with:  
+      # Passes the message to the reusable workflow  
+      message: "Caller Workflow too: name: Caller Workflow"  
