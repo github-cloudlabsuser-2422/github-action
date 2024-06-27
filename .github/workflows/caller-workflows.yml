@@ -9,14 +9,14 @@ on:
   workflow_dispatch:  
   
 jobs:  
-  # Job to call the reusable workflow  
-  call-reusable-workflow:  
+  # Job to call the reusable action  
+  call-reusable-action:  
     runs-on: ubuntu-latest  
   
     steps:  
-      # Step to call the reusable workflow  
-      - name: Call reusable workflow  
-        uses: ./.github/workflows/reusable-print-message.yml  
+      # Step to call the reusable action  
+      - name: Call reusable action  
+        uses: owner/repo@v1  # Replace with the actual owner/repo and version of the reusable action  
         with:  
           message: ${{ github.event.inputs.message }}  
   
