@@ -15,4 +15,4 @@ jobs:
   
     steps:  
       - name: Call Reusable Workflow  
-        run: ./.github/workflows/reusable-print-message.yml "Hello from the caller workflow!"  
+        run: .github/workflows/reusable-print-message.yml "Hello from the caller workflow!"  
