@@ -1,4 +1,3 @@
-#HI  
 name: Caller Workflow  
   
 on:  
@@ -12,13 +11,16 @@ on:
 jobs:  
   # Job to call the reusable workflow  
   call-reusable-workflow:  
-    # Specifies the path to the reusable workflow  
-    uses: ./.github/workflows/reusable-print-message.yml  
-    with:  
-      # Passes the message to the reusable workflow  
-      message: "Hello from the caller workflow!"  
+    runs-on: ubuntu-latest  
   
     steps:  
+      # Step to call the reusable workflow  
+      - name: Call reusable workflow  
+        uses: ./.github/workflows/reusable-print-message.yml  
+        with:  
+          message: ${{ github.event.inputs.message }}  
+  
       # Step to print the message from the caller workflow  
       - name: Print caller message  
-        run: echo "Message from caller workflow: Hello from the caller workflow!"  
+        run: |  
+          echo "Message from caller workflow: ${{ github.event.inputs.message }}"  
